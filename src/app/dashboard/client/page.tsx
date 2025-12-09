@@ -177,7 +177,7 @@ export default function ClientDashboardPage() {
               key={ticket.id}
               title={ticket.title}
               actions={
-                <Link href={`/tickets/${ticket.id}`}>
+                <Link href={`/tickets/${ticket.id}`} prefetch>
                   <Button variant="secondary" size="sm">View</Button>
                 </Link>
               }

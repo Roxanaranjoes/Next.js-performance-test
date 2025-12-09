@@ -28,10 +28,10 @@ export default function RootLayout({
                 </span>
               </Link>
               <div className="nav-links">
-                <Link className="nav-link" href="/dashboard">
+                <Link className="nav-link" prefetch href="/dashboard">
                   Dashboard
                 </Link>
-                <Link className="nav-link" href="/tickets/new">
+                <Link className="nav-link" prefetch={false} href="/tickets/new">
                   New Ticket
                 </Link>
               </div>
