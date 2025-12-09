@@ -33,7 +33,7 @@ export async function connectDB(): Promise<typeof mongoose> {
   // Create a new connection promise once.
   if (!cached.promise) {
     mongoose.set("strictQuery", true); // Enforce strict querying.
-    cached.promise = mongoose.connect(MONGODB_URI);
+    cached.promise = mongoose.connect(MONGODB_URI as string); // Already validated above.
   }
 
   cached.conn = await cached.promise;
