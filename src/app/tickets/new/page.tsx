@@ -96,7 +96,7 @@ export default function NewTicketPage() {
             <select
               className="input"
               value={priority}
-              onChange={(e) => setPriority(e.target.value)}
+              onChange={(e) => setPriority(e.target.value as TicketPriority)}
             >
               <option value="low">Low</option>
               <option value="medium">Medium</option>
