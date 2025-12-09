@@ -17,6 +17,7 @@ function toTicketDTO(ticket: any): TicketDTO {
     priority: ticket.priority as TicketPriority,
     createdBy: ticket.createdBy?.toString?.() || "",
     assignedTo: ticket.assignedTo?.toString?.(),
+    imageUrl: ticket.imageUrl,
     createdAt: ticket.createdAt?.toISOString?.() || new Date().toISOString(),
     updatedAt: ticket.updatedAt?.toISOString?.() || new Date().toISOString(),
   };
@@ -94,6 +95,7 @@ export async function PATCH(
     // Apply only the allowed fields.
     if (body.title) ticket.title = body.title;
     if (body.description) ticket.description = body.description;
+    if (body.imageUrl) ticket.imageUrl = body.imageUrl;
 
     if (isAgent(sessionUser)) {
       // Agents may adjust status, priority, and assignment.

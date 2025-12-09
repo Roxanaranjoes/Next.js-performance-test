@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { useAppContext } from "@/context/AppContext";
+import Image from "next/image";
 import { toastError, toastInfo } from "@/lib/toast";
 import { TicketDTO } from "@/types";
 import { signOut } from "next-auth/react";
@@ -185,6 +186,18 @@ export default function ClientDashboardPage() {
               <p className="muted" style={{ marginTop: 0, marginBottom: 8 }}>
                 {ticket.description}
               </p>
+              {ticket.imageUrl && (
+                <div style={{ marginBottom: 8 }}>
+                  <Image
+                    src={ticket.imageUrl}
+                    alt={ticket.title}
+                    width={640}
+                    height={360}
+                    style={{ width: "100%", height: "auto", borderRadius: 10, objectFit: "cover" }}
+                    unoptimized
+                  />
+                </div>
+              )}
               <div className="ticket-meta">
                 <Badge variant={statusBadges[ticket.status] || "default"}>
                   {ticket.status.replace("_", " ")}

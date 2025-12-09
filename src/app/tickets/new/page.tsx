@@ -16,6 +16,7 @@ export default function NewTicketPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState<TicketPriority>("medium");
+  const [imageUrl, setImageUrl] = useState<string>("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
@@ -27,7 +28,7 @@ export default function NewTicketPage() {
     setLoading(true);
 
     try {
-      const res = await createTicket({ title, description, priority });
+      const res = await createTicket({ title, description, priority, imageUrl: imageUrl || undefined });
       if (res.error) {
         setError(res.error);
         toastError(res.error);
@@ -102,6 +103,15 @@ export default function NewTicketPage() {
               <option value="medium">Medium</option>
               <option value="high">High</option>
             </select>
+          </label>
+          <label>
+            <div className="muted">Image URL (optional)</div>
+            <input
+              className="input"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
+              placeholder="https://example.com/image.jpg"
+            />
           </label>
           {error && (
             <div className="muted" style={{ color: "#b91c1c" }}>

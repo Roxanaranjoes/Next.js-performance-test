@@ -55,6 +55,7 @@ export async function createTicket(payload: {
   title: string;
   description: string;
   priority: TicketPriority;
+  imageUrl?: string;
 }): Promise<ServiceResponse<TicketDTO>> {
   try {
     const res = await api.post("/api/tickets", payload);
@@ -72,6 +73,7 @@ export async function updateTicket(
     status: TicketStatus;
     priority: TicketPriority;
     assignedTo: string | undefined;
+    imageUrl?: string;
   }>
 ): Promise<ServiceResponse<TicketDTO>> {
   try {

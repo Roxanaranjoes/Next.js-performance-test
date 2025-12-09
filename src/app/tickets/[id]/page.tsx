@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { useAppContext } from "@/context/AppContext";
 import { AgentDTO, createComment, getAgents, getCommentsByTicket, getTicketById, updateTicket } from "@/lib/services/api";
+import Image from "next/image";
 import { toastError, toastSuccess } from "@/lib/toast";
 import { useParams } from "next/navigation";
 import { FormEvent, useEffect, useMemo, useState } from "react";
@@ -205,6 +206,18 @@ export default function TicketDetailPage() {
 
       <Card title="Details" className="ghost-card">
         <p style={{ marginTop: 0 }}>{ticket.description}</p>
+        {ticket.imageUrl && (
+          <div style={{ margin: "12px 0" }}>
+            <Image
+              src={ticket.imageUrl}
+              alt={ticket.title}
+              width={800}
+              height={450}
+              style={{ width: "100%", height: "auto", borderRadius: 10, objectFit: "cover" }}
+              unoptimized
+            />
+          </div>
+        )}
         {ticket.assignedTo && (
           <p className="muted">
             Assigned to:{" "}

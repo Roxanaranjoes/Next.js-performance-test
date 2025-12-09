@@ -30,6 +30,7 @@ export interface TicketDTO {
   priority: TicketPriority;
   createdBy: string;
   assignedTo?: string;
+  imageUrl?: string;
   createdAt: string;
   updatedAt: string;
 }

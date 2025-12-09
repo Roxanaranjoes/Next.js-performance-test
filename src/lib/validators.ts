@@ -14,7 +14,7 @@ export function validateRegisterInput(body: any): ValidationResult {
   return { valid: true };
 }
 
-// Ensure tickets are created with the essential fields.
+// Ensure tickets are created with the essential fields (image is optional).
 export function validateTicketInput(body: any): ValidationResult {
   if (!body?.title?.toString?.().trim() || !body?.description?.toString?.().trim()) {
     return { valid: false, error: "Title and description are required" };
@@ -46,7 +46,7 @@ export function validateTicketUpdate(
     return { valid: false, error: "Clients can only edit open tickets" };
   }
 
-  const allowed = body.title || body.description;
+  const allowed = body.title || body.description || body.imageUrl;
   if (!allowed) {
     return { valid: false, error: "Nothing to update" };
   }

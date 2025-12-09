@@ -9,6 +9,7 @@ export interface ITicket extends Document {
   priority: TicketPriority;
   createdBy: Types.ObjectId;
   assignedTo?: Types.ObjectId;
+  imageUrl?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -29,6 +30,7 @@ const TicketSchema = new Schema<ITicket>(
     },
     createdBy: { type: Schema.Types.ObjectId, ref: "User", required: true },
     assignedTo: { type: Schema.Types.ObjectId, ref: "User" },
+    imageUrl: { type: String },
   },
   { timestamps: true }
 );
